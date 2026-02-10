@@ -21,7 +21,7 @@ const GoogleMapView = () => {
   });
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const GOOGLE_API_KEY = "your api key";
+  const GOOGLE_API_KEY = "AIzaSyDrD4_Uluk_2vhB5QqtraYS0mGIL4ZIdYk";
 
   // Toggle layer visibility
   const toggleLayer = useCallback((layerName) => {
