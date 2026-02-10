@@ -33,7 +33,7 @@ const BusSeats = ({ userId }) => {
             return;
         }
         try {
-                        const response = await axios.post(`/api/booking/`, { seat: seatId }, { withCredentials: true })
+                        await axios.post(`/api/booking/`, { seat: seatId }, { withCredentials: true })
             alert("Booking Successful")
             setSeats((prevSeats) => 
                                 prevSeats.map((seat) => {

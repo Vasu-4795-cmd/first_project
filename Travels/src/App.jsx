@@ -9,6 +9,9 @@ import UserBookings from './deepcomponents/UserBookings'
 import Wrapper from './deepcomponents/Wrapper'
 import Contact from "./deepcomponents/Contact";
 import About from "./deepcomponents/About";
+import Schedule from "./deepcomponents/Schedule";
+import BusTracking from "./deepcomponents/BusTracking";
+import GoogleMapView from "./deepcomponents/GoogleMapView";
 import { Navigate } from 'react-router-dom'
 
 
@@ -45,6 +48,9 @@ const App = () => {
 
           <Route path="/buses" element={<BusList userId={userId} />} />
           <Route path="/bus/:busId" element={<BusSeats userId={userId} />} />
+          <Route path="/schedule" element={<Schedule userId={userId} />} />
+          <Route path="/bus-tracking" element={<BusTracking userId={userId} />} />
+          <Route path="/googlemapview" element={<GoogleMapView userId={userId} />} />
           <Route path="/my-bookings" element={<UserBookings userId={userId} />} />
         </Routes>
       </Wrapper>

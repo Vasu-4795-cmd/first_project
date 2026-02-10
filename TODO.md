@@ -1,0 +1,6 @@
+- Fix BusTracking.jsx to work properly and make it fast
+  - Fix generateMockLocation dependency on bus (which is undefined initially)
+  - Optimize Google Maps rendering to avoid unnecessary re-renders
+  - Add proper error handling for API calls
+  - Ensure safe access to Google Maps objects
+  - Reduce update frequency or optimize updates for better performance

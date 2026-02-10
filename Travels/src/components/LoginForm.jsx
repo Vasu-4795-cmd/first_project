@@ -16,7 +16,9 @@ const handleSubmit =async(e)=>{
     try {
         const csrfResp = await axios.get('/api/csrf/', { withCredentials: true })
         if (csrfResp?.data?.csrfToken) axios.defaults.headers.common['X-CSRFToken'] = csrfResp.data.csrfToken
-    } catch (e) {}
+    } catch {
+        // ignore CSRF errors
+    }
     const response = await axios.post('/api/login/', form, { withCredentials: true })
         setMessage('Login Success')
 
@@ -24,7 +26,7 @@ const handleSubmit =async(e)=>{
             onLogin(response.data.user_id)
         }
 
-    } catch (error) {
+    } catch {
         setMessage('Login Failed')
     }
 

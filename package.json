@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "dependencies": {
+    "@googlemaps/react-wrapper": "^1.2.0",
+    "@react-google-maps/api": "^2.20.8",
+    "react-icons": "^5.5.0"
   }
 }

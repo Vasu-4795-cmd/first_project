@@ -47,6 +47,8 @@ class BusListCreateView(generics.ListCreateAPIView):
 class BusDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bus.objects.all()
     serializer_class = BusSerializer
+    lookup_field = 'bus_id'
+    lookup_url_kwarg = 'bus_id'
 
 class BookingView(APIView):
     permission_classes = [IsAuthenticated]

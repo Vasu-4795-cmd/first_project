@@ -210,6 +210,16 @@ const BusList = () => {
                 </div>
             </div>
 
+            {/* Schedule Button */}
+            <div className="mb-6">
+                <button
+                    onClick={() => navigate('/schedule')}
+                    className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                >
+                    View Schedule
+                </button>
+            </div>
+
             {/* Bus Cards */}
             {filteredBuses.length === 0 ? (
                 <p className="text-center text-white-600">No buses found</p>

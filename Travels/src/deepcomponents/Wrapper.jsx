@@ -23,7 +23,7 @@ const Wrapper = ({ userId, handleLogout, children }) => {
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
                 <span className="text-indigo-700 font-bold text-xl">🚌</span>
               </div>
-              <span className="text-xl font-bold">BusTravel</span>
+              <span className="text-xl font-bold">QuickBus</span>
             </Link>
 
             {/* Navigation Links */}
