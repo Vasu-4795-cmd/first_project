@@ -1,18 +1,13 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd Travels && npm install --legacy-peer-deps && npm run build",
+  "outputDirectory": "Travels/dist",
+  "installCommand": "cd Travels && npm install --legacy-peer-deps",
+  "devCommand": "cd Travels && npm run dev",
+  "framework": "vite",
+  "rewrites": [
     {
-      "src": "travels/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb", "runtime": "python3.9"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "travels/wsgi.py"
+      "source": "/(.*)",
+      "destination": "/Travels/dist/index.html"
     }
   ]
 }
