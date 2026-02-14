@@ -9,9 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import pymysql
-pymysql.install_as_MySQLdb()
-
 
 import os
 from pathlib import Path
@@ -29,7 +26,17 @@ SECRET_KEY = 'django-insecure-u!x%7#q!+b$8$(vma2bxw#*b!*@2w!c$n$3w_9ok8-1jp_)_3h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    'root',
+    'manager',
+    'vasu',
+    '.vercel.app',
+    '.onrender.com',
+    '*',
+]
 
 
 # Application definition
@@ -45,20 +52,20 @@ INSTALLED_APPS = [
     'bookings.apps.BookingsConfig',
     'rest_framework.authtoken',
     'corsheaders',
-    
 ]
+
 REST_FRAMEWORK = {
-     'DEFAULT_PERMISSION_CLASSES': [
-         'rest_framework.permissions.AllowAny',
-     ],
-      'DEFAULT_AUTHENTICATION_CLASSES': [
-         'rest_framework.authentication.SessionAuthentication',
-         'rest_framework.authentication.TokenAuthentication',
-     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Must be first
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,20 +81,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5175",
 ]
 
-# For credentialed requests, do NOT allow all origins; list allowed origins instead
 CORS_ALLOW_ALL_ORIGINS = False
-
 CORS_ALLOW_CREDENTIALS = True
 
-# During local development allow cookies across ports. In production set SECURE=True and use HTTPS.
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_SAMESITE = 'Lax'
-
-
-ROOT_URLCONF = 'travels.urls'
-
 
 ROOT_URLCONF = 'travels.urls'
 
@@ -109,19 +109,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'travels.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# =====================================================
+# DATABASE CONFIGURATION - SQLITE3
+# =====================================================
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME' :'vasu',
-        'USER': 'root',
-        'PASSWORD': 'manager',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # This creates db.sqlite3 in your project root
     }
 }
+
+# Alternative: If you want to use a specific name like 'vasu.db'
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'vasu.db',
+#     }
+# }
 
 
 # Password validation
@@ -147,11 +152,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -159,15 +161,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files (User uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Allow Vite dev server for CSRF
+# CSRF trusted origins for development
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:5174',
     'http://localhost:5175',
+    'http://127.0.0.1:8000',
 ]
