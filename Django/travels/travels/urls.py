@@ -30,5 +30,6 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-token-auth/', obtain_auth_token),
-    path('api/', include("bookings.urls"))
+    path('api/', include("bookings.urls")),
+    path('', home, name='home'),
 ]
