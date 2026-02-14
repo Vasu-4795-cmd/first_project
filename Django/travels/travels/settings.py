@@ -39,6 +39,32 @@ ALLOWED_HOSTS = [
 ]
 
 
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.onrender.com',  # Allows any subdomain on render.com
+    'first-project-12-6i5e.onrender.com',
+]
+
+# CSRF Settings
+CSRF_TRUSTED_ORIGINS = [
+    'https://first-project-12-6i5e.onrender.com',
+    'http://first-project-12-6i5e.onrender.com',
+]
+
+# Security Settings (for production)
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
