@@ -9,5 +9,9 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <form action="/admin/login/" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="csrfmiddlewaretoken" value="your-csrf-token-here">
+      <button type="submit">Login</button>
   </body>
 </html>
