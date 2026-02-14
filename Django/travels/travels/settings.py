@@ -51,6 +51,8 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     'https://first-project-12-6i5e.onrender.com',
     'http://first-project-12-6i5e.onrender.com',
+    'https://first-project-16.onrender.com/',
+    'http://first-project-16.onrender.com/',
 ]
 
 # Security Settings (for production)
