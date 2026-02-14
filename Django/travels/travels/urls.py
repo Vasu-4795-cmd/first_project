@@ -17,6 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
+from django.http import HttpResponse
+
+
+def home(request):
+    return HttpResponse("""
+        <h1>Welcome to My Django Site!</h1>
+        <p>Site is working correctly.</p>
+        <p><a href="/admin/">Go to Admin</a></p>
+    """)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
